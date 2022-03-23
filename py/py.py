@@ -1,9 +1,10 @@
-import random
-print('coin game')
-coin = random.randrange(2)
-if (coin == 1):
-    print('앞')
-else:
-    print('뒤')
+def smaller(x,y):
+    if (x<y):
+        return x
+    else:
+        return y
 
-print('_____'*10)
+def smallest(x,y,z,a):
+    return smaller(smaller(smaller(x,y),z),a)
+
+print(smallest(390,399,389,388))
