@@ -12,7 +12,7 @@ def isfixed(s):
 def isfloat(s):
     (significand, e, exponent) = s.partition('e')
     return e == '' and exponent == '' and isfixed(significand) or\
-           e == 'e' and isfixed(significand) and isinteger(exponent)
+           isfixed(significand) and isinteger(exponent)
            
 print(isfloat("2"))
 print(isfloat("-2"))
