@@ -6,13 +6,14 @@ def isinteger(s):
 def isfixed(s):
     (num, dot, fraction) = s.partition('.')
     return dot == '' and isinteger(num) and fraction == '' or\
+           dot == '.' and\
            ((num == '' or num == '-') and fraction.isdigit() or\
            isinteger(num) and (fraction == '' or fraction.isdigit()))
 
 def isfloat(s):
     (significand, e, exponent) = s.partition('e')
     return e == '' and exponent == '' and isfixed(significand) or\
-           isfixed(significand) and isinteger(exponent)
+           e == 'e' and isfixed(significand) and isinteger(exponent)
            
 print(isfloat("2"))
 print(isfloat("-2"))
