@@ -1,11 +1,11 @@
-def remove_one_1(x,xs):
+def remove_one(x,xs):
     if xs != []:
         if x == xs[0]:
             return xs[1:]
         else:
-            return [xs[0]]+remove_one_1(x,xs[1:])
+            return [xs[0]]+remove_one(x,xs[1:])
     else:
-        return xs
+        return []
 
 def remove_one_2(x,xs):
     def loop(xs,left):
@@ -28,10 +28,10 @@ def remove_one_3(x,xs):
             xs = xs[1:]
     return left
 
-
-print(remove_one_3(3,[]))        # []
-print(remove_one_3(3,[3]))       # []
-print(remove_one_3(3,[2]))       # [2]
-print(remove_one_3(3,[2,3,2,3])) # [2, 2, 3]
-print(remove_one_3(3,[2,2,2,3])) # [2, 2, 2]
-print(remove_one_3(3,[2,2,2,2])) # [2, 2, 2, 2]
+# Test code
+print(remove_one(3,[]))        # []
+print(remove_one(3,[3]))       # []
+print(remove_one(3,[2]))       # [2]
+print(remove_one(3,[2,3,2,3])) # [2, 2, 3]
+print(remove_one(3,[2,2,2,3])) # [2, 2, 2]
+print(remove_one(3,[2,2,2,2])) # [2, 2, 2, 2]
