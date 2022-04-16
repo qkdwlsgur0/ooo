@@ -28,6 +28,7 @@ def remove_one_3(x,xs):
             xs = xs[1:]
     return left
 
+
 # Test code
 print(remove_one(3,[]))        # []
 print(remove_one(3,[3]))       # []
