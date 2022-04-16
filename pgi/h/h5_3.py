@@ -9,7 +9,7 @@ def remove_all(x,xs):
     return left
 
 
-def remove_duplicates1(xs):
+def remove_duplicates(xs):
     if len(xs) >= 2:
         head = xs[0]
         return [head]+remove_duplicates(remove_all(head,xs))
@@ -25,7 +25,7 @@ def remove_duplicates_2(xs):
             return left+xs
     return loop(xs,[])
     
-def remove_duplicates(xs):
+def remove_duplicates_3(xs):
     left = [] 
     while len(xs) >= 2:
         head = xs[0]
