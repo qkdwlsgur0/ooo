@@ -1,6 +1,3 @@
-from operator import truediv
-
-
 def isleapyear1(y):
     if (y >= 0):
         return y%4 == 0 and y%100 != 0 or y%400 == 0
