@@ -45,4 +45,4 @@ def russian_mult4(m,n):
     return ans
 
 
-print(russian_mult4(57,0))
+print(russian_mult4(8,6))

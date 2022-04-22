@@ -1,7 +1,9 @@
+#제곱
+
 def square(n):
     def loop(n):
         if n > 0:
-            return square(n-1)+(2*n-1)
+            return square(n-1)+(n+n-1)
         else:
             return 0
     return loop(abs(n))
@@ -9,7 +11,7 @@ def square(n):
 def square2(n):
     def loop(n,total):
         if n > 0:
-            return loop(n-1,total+(2*n-1))
+            return loop(n-1,total+(n+n-1))
         else:
             return total
     return loop(abs(n),0)
@@ -18,11 +20,11 @@ def square3(n):
     n = abs(n)
     total = 0
     while n > 0:
-        total += (2*n-1)
+        total += (n+n-1)
         n -= 1
     return total
 
-
+print(square(3))
 
 
 

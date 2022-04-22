@@ -1,3 +1,5 @@
+#선택정렬
+
 def selection_sort_1(xs):
     if xs != []:
         smallest = min(xs)
@@ -27,6 +29,7 @@ def selection_sort_3(xs):
 
 print(selection_sort_3([9,8,7,6,5,4,3,2,1]))
 
+#삽입정렬 삽입 함수 
 
 def insert_1(x,ss):
     if ss != []:
@@ -36,8 +39,6 @@ def insert_1(x,ss):
             return [ss[0]] + insert_1(x,ss[1:])
     else:
         return [x]
-
-print(insert_1(9,[2,4,5,7]))
 
 def insert_2(x,ss):
     def loop(ss,left):
@@ -49,7 +50,6 @@ def insert_2(x,ss):
         else:
             return left + [x]
     return loop(ss,[])
-
 
 def insert_3(x,ss):
     left = []

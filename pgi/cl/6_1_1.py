@@ -1,3 +1,5 @@
+#최대공약수 한번 보기
+
 def gcd(m,n):
     if (n != 0):
         return gcd(n,m%n)

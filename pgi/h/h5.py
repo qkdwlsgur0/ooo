@@ -9,26 +9,26 @@ def remove_one(x,xs):
     else:
         return []
 
-def remove_one_2(x,xs):
-    def loop(xs,left):
+def remove_one(x,xs):
+    def loop(xs,ss):
         if xs != []:
             if x == xs[0]:
-                return left+xs[1:]
+                return ss+xs[1:]
             else:
-                return loop(xs[1:],left+[xs[0]])
+                return loop(xs[1:],ss+[xs[0]])
         else:
-            return left
+            return ss
     return loop(xs,[])
 
-def remove_one_3(x,xs):
-    left = []
+def remove_one(x,xs):
+    ss = []
     while xs != []:
         if x == xs[0]:
-            return left+xs[1:]
+            return ss+xs[1:]
         else:
-            left += [xs[0]]
+            ss.append(xs[0]) # += [xs[0]]
             xs = xs[1:]
-    return left
+    return ss
 
 
 #__________ 5-2 _______________________________________
@@ -42,40 +42,28 @@ def remove_all(x,xs):
     else:
         return []
 
-def remove_all_2(x,xs):
-    def loop(xs,left):
+def remove_all(x,xs):
+    def loop(xs,ss):
         if xs != []:
-            if x == xs[0]:
-                return loop(xs[1:],left)
-            else:
-                return loop(xs[1:],left+[xs[0]])
+            if x != xs[0]:
+                ss.append(xs[0])
+            return loop(xs[1:],ss)
         else:
-            return left
+            return ss
     return loop(xs,[])
 
-def remove_all_3(x,xs):
-    left = []
+def remove_all(x,xs):
+    ss = []
     while xs != []:
         if x == xs[0]:
             xs = xs[1:]
         else:
-            left += [xs[0]]
+            ss.append(xs[0])
             xs = xs[1:]
-    return left
+    return ss
 
 
 #__________ 5-3 _______________________________________
-
-def remove_all(x,xs):
-    left = []
-    while xs != []:
-        if x == xs[0]:
-            xs = xs[1:]
-        else:
-            left += [xs[0]]
-            xs = xs[1:]
-    return left
-
 
 def remove_duplicates(xs):
     if len(xs) >= 2:
@@ -84,22 +72,22 @@ def remove_duplicates(xs):
     else:
         return xs
 
-def remove_duplicates_2(xs):
-    def loop(xs,left):
+def remove_duplicates(xs):
+    def loop(xs,ss):
         if len(xs) >= 2:
             head = xs[0]
-            return loop(remove_all(head,xs),left+[head])
+            return loop(remove_all(head,xs),ss+[head])
         else:
-            return left+xs
+            return ss+xs
     return loop(xs,[])
     
-def remove_duplicates_3(xs):
-    left = [] 
+def remove_duplicates(xs):
+    ss = [] 
     while len(xs) >= 2:
         head = xs[0]
-        left += [head]
+        ss.append(head)
         xs = remove_all(head,xs)
-    return left+xs
+    return ss+xs
 
 
 #__________ 5-4 _______________________________________
@@ -113,36 +101,35 @@ def union(xs,ys):
     else:
         return ys
 
-def union_2(xs,ys):
-    def loop(xs,left):
+def union(xs,ys):
+    def loop(xs,ss):
         if xs != []:
-            if xs[0] in ys:
-                return loop(xs[1:],left)
-            else:
-                return loop(xs[1:],left+[xs[0]])
+            if xs[0] not in ys:
+                ss.append(xs[0])
+            return loop(xs[1:],ss)
         else:
-            return left+ys
+            return ss+ys
     return loop(xs,[])
 
-def union_3(xs,ys):
-    left = []
+def union(xs,ys):
+    ss = []
     while xs != []:
         if xs[0] in ys:
             xs = xs[1:]
         else:
-            left += [xs[0]]
+            ss.append(xs[0])
             xs = xs[1:]
-    return left+ys
+    return ss+ys
 
-def union_4(xs,ys):
-    left = []
+def union(xs,ys):
+    ss = []
     for i in xs:
         if i in ys:
             xs = xs[1:]
         else:
-            left += [i]
+            ss.append(i)
             xs = xs[1:]
-    return left+ys
+    return ss+ys
 
 
 #__________ 5-5 _______________________________________
@@ -156,37 +143,35 @@ def intersection(xs,ys):
     else:
         return []
 
-def intersection_2(xs,ys):
-    def loop(xs,left):
+def intersection(xs,ys):
+    def loop(xs,ss):
         if xs != []:
             if xs[0] in ys:
-                return loop(xs[1:],left+[xs[0]])
-            else:
-                return loop(xs[1:],left)
+                ss.append(xs[0])
+            return loop(xs[1:],ss)
         else:
-            return left
+            return ss
     return loop(xs,[])
 
-def intersection_3(xs,ys):
-    left = []
+def intersection(xs,ys):
+    ss = []
     while xs != []:
         if xs[0] in ys:
-            left += [xs[0]]
+            ss.append(xs[0])
             xs = xs[1:]
         else:
             xs = xs[1:]
-    return left
+    return ss
 
-def intersection_4(xs,ys):
-    left = []
+def intersection(xs,ys):
+    ss = []
     for i in xs:
         if i in ys:
-            left += [i]
+            ss.append(i)
             xs = xs[1:]
         else:
             xs = xs[1:]
-    return left
-
+    return ss
 
 #__________ 5-6 _______________________________________
 
@@ -199,41 +184,31 @@ def difference(xs,ys):
     else:
         return []
 
-def difference_2(xs,ys):
-    def loop(xs,left):
+def difference(xs,ys):
+    def loop(xs,ss):
         if xs != []:
-            if xs[0] in ys:
-                return loop(xs[1:],left)
-            else:
-                return loop(xs[1:],left+[xs[0]])
+            if xs[0] not in ys:
+                ss.append(xs[0])
+            return loop(xs[1:],ss)
         else:
-            return left
+            return ss
     return loop(xs,[])
 
-def difference_3(xs,ys):
-    left = []
+def difference(xs,ys):
+    ss = []
     while xs != []:
         if xs[0] in ys:
             xs = xs[1:]
         else:
-            left += [xs[0]]
+            ss.append(xs[0])
             xs = xs[1:]
-    return left
+    return ss
 
-def difference_4(xs,ys):
-    left = []
+def difference(xs,ys):
+    ss = []
     for i in xs:
-        if i in ys:
-            xs = xs[1:]
-        else:
-            left += [i]
-            xs = xs[1:]
-    return left
-
-
-
-
-
-
+        if i not in ys:
+            ss.append(i)
+    return ss
 
 

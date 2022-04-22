@@ -12,7 +12,6 @@ def sumrange2(m, n):
             return total
     return loop(m, n, 0)
 
-
 def sumrange3(m, n):
     total = 0
     while n >= m:
