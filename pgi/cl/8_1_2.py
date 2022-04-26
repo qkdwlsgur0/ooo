@@ -25,10 +25,10 @@ def trinum(n):
 
 def square(n):
     n = abs(n)
-    ans = 0
+    sum = 0
     for i in range(1,n+1):
-        ans += i+i-1
-    return ans
+        sum += i+i-1
+    return sum
 
 
 #updown재귀함수를 꼬리재귀 while루프 for루프로 (짝수 0.5배 홀수 2배)
@@ -59,10 +59,9 @@ def updown(ns):
     while ns != []:
         if ns[0]%2 == 0:
             ss.append(ns[0]//2)
-            ns = ns[1:]
         else:
             ss.append(ns[0]*2)
-            ns = ns[1:]    
+        ns = ns[1:]    
     return ss
 
 def updown(ns):
