@@ -1,7 +1,7 @@
 print('Score Average Calculator')
-number = input('How any classes? ')
+number = input('How many classes? ')
 while not (number.isdigit()):
-    number = input('How any classes? ')
+    number = input('How many classes? ')
 number = int(number)
 total = 0
 count = 0
